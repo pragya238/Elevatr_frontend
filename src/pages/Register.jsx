@@ -1,6 +1,5 @@
 import { useState } from "react";
 import api from "../config/axios";
-
 import "../styles/forms.css";
 
 export default function Register() {
@@ -8,14 +7,16 @@ export default function Register() {
 
   const submit = async (e) => {
     e.preventDefault();
-    
-    console.log("SUBMIT FUNCTION TRIGGERED", form); 
+
+    console.log("SUBMIT FUNCTION TRIGGERED", form);
 
     try {
-     await api.post("/auth/register", data);
+      // FIXED → send "form", not "data"
+      const res = await api.post("/auth/register", form);
 
       console.log("REGISTER RESPONSE:", res.data);
 
+      // FIXED → use res.data, not undefined "data"
       if (res.data?.token) {
         localStorage.setItem("token", res.data.token);
         window.location.href = "/dashboard";
@@ -24,7 +25,10 @@ export default function Register() {
       }
     } catch (error) {
       console.error("REGISTER ERROR:", error);
-      const msg = error?.response?.data?.message || error.message || "Registration failed";
+      const msg =
+        error?.response?.data?.message ||
+        error.message ||
+        "Registration failed";
       alert(msg);
     }
   };
