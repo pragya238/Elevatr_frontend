@@ -1,0 +1,126 @@
+.navbar {
+  background: var(--card);
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: var(--border);
+}
+
+.nav-left {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+.logo {
+  text-decoration: none;
+  color: var(--accent);
+  font-size: 24px;
+  font-weight: 700;
+  transition: all var(--smooth);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.nav-right {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-right a,
+.nav-right button {
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--subtext);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all var(--smooth);
+  padding: 6px 12px;
+  border-radius: var(--radius);
+}
+
+.nav-right a:hover {
+  color: var(--accent);
+}
+
+.nav-right button {
+  padding: 8px 12px;
+}
+
+.nav-btn {
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  border-radius: var(--radius);
+  padding: 8px 16px;
+  transition: all var(--smooth);
+}
+
+.nav-btn:hover {
+  background: var(--accent);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.logout-btn {
+  background: none;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+.logout-btn:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.theme-toggle {
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 50%;
+  transition: all var(--smooth);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background: var(--accent-light);
+  transform: rotate(20deg);
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .nav-left {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-right {
+    width: 100%;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .nav-right a,
+  .nav-right button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}

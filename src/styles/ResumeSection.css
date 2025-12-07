@@ -1,0 +1,169 @@
+/* MAIN CARD WRAPPER */
+.resume-card-container {
+  background: linear-gradient(135deg, rgba(153,205,216,0.08), rgba(205,214,196,0.12));
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 32px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+/* LEFT TEXT AREA */
+.resume-left {
+  flex: 1;
+  min-width: 280px;
+}
+
+.resume-pill {
+  background: var(--accent-light);
+  padding: 6px 18px;
+  color: #000;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.resume-big-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 12px 0 6px;
+}
+
+.resume-text {
+  font-size: 14px;
+  color: var(--subtext);
+  margin-bottom: 22px;
+}
+
+/* MAIN BUTTON */
+.resume-btn-pro {
+  width: 100%;
+  padding: 14px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light));
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 10px 25px rgba(153,205,216,0.4);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.resume-btn-pro:hover {
+  transform: translateY(-2px);
+}
+
+/* MINI PREVIEW CARD */
+.resume-preview-mini {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  min-width: 240px;
+}
+
+.mini-card {
+  width: 160px;
+  height: 230px;
+  padding: 16px;
+  border-radius: 16px;
+  background: var(--card);
+  border: var(--border);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+.mini-line {
+  height: 10px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.06);
+  margin: 8px 0;
+}
+
+.mini-line-top {
+  height: 16px;
+  background: var(--accent-light);
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.mini-line.short { width: 45%; }
+.mini-line.mid   { width: 70%; }
+
+/* FORM CONTAINER */
+.resume-form-container {
+  background: rgba(255,255,255,0.04);
+  padding: 28px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.09);
+  margin-top: 22px;
+}
+
+.resume-form-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.resume-form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* OUTPUT BOX */
+.resume-output-box {
+  background: #111;
+  padding: 22px;
+  margin-top: 22px;
+  border-radius: 16px;
+  border: 1px solid #333;
+}
+
+.resume-output {
+  white-space: pre-wrap;
+  font-size: 14px;
+}
+
+/* OUTPUT SCREEN */
+.resume-output-container {
+  margin-top: 20px;
+  margin-bottom: 0;
+  padding-bottom: 0 ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; 
+}
+
+.resume-output-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: var(--text);
+}
+
+/* Resume big box */
+.resume-output-box {
+  background: rgba(255,255,255,0.06);
+  padding: 28px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  max-width: 750px;
+  margin: 0 auto;        /* center */
+  text-align: left;
+  box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+  backdrop-filter: blur(8px);
+}
+
+/* Resume text */
+.resume-output-text {
+  white-space: pre-wrap;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #eaeaea;
+  font-family: "Menlo", "Courier New", monospace;
+}
