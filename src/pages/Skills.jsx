@@ -8,17 +8,28 @@ export default function Skills() {
   const [name, setName] = useState("");
   const [level, setLevel] = useState("Beginner");
   const [loading, setLoading] = useState(false);
+
+  // NEW FILTER + SORT STATES 
+  const [filter, setFilter] = useState("all");
+  const [sort, setSort] = useState("az");
+
+  // Load skills with backend filtering + sorting
   const loadSkills = async () => {
     try {
-      const res = await api.get("/skills");
+      const res = await api.get(
+        `/skills?level=${filter}&sort=${sort}`
+      );
       setSkills(res.data);
     } catch (err) {
       console.log("LOAD ERROR:", err);
     }
   };
+
   useEffect(() => {
     loadSkills();
-  }, []);
+  }, [filter, sort]);
+
+  // ADD Skill
   const addSkill = async () => {
     if (!name.trim()) return alert("Skill name required");
     try {
@@ -33,6 +44,8 @@ export default function Skills() {
       setLoading(false);
     }
   };
+
+  // DELETE Skill
   const deleteSkill = async (id) => {
     try {
       await api.delete(`/skills/${id}`);
@@ -42,6 +55,7 @@ export default function Skills() {
     }
   };
 
+  // UPDATE Level
   const updateLevel = async (id, newLevel) => {
     try {
       await api.put(`/skills/${id}`, { level: newLevel });
@@ -56,6 +70,32 @@ export default function Skills() {
       <div className="skills-page">
         <h1 className="skills-title">Your Skills</h1>
 
+        {/* 🔥 FILTER + SORT */}
+        <div className="filter-sort-box">
+          <select
+            className="select"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+          >
+            <option value="all">All Levels</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Intermediate">Intermediate</option>
+            <option value="Advanced">Advanced</option>
+          </select>
+
+          <select
+            className="select"
+            value={sort}
+            onChange={(e) => setSort(e.target.value)}
+          >
+            <option value="az">A → Z</option>
+            <option value="za">Z → A</option>
+            <option value="latest">Latest First</option>
+            <option value="oldest">Oldest First</option>
+          </select>
+        </div>
+
+        {/* Add Skill */}
         <div className="add-skill-box">
           <input
             className="input"
@@ -79,6 +119,7 @@ export default function Skills() {
           </button>
         </div>
 
+        {/*  Skills Table */}
         <div className="skills-table-wrapper">
           <table className="skills-table">
             <thead>
@@ -89,10 +130,12 @@ export default function Skills() {
                 <th>Actions</th>
               </tr>
             </thead>
+
             <tbody>
               {skills.map((skill) => (
                 <tr key={skill._id}>
                   <td>{skill.name}</td>
+
                   <td>
                     <select
                       className="select small"
@@ -104,15 +147,21 @@ export default function Skills() {
                       <option>Advanced</option>
                     </select>
                   </td>
+
                   <td>{new Date(skill.createdAt).toLocaleDateString()}</td>
+
                   <td>
-                    <button className="delete-btn" onClick={() => { if(confirm('Delete skill?')) deleteSkill(skill._id); }}>
+                    <button
+                      className="delete-btn"
+                      onClick={() => deleteSkill(skill._id)}
+                    >
                       Delete
                     </button>
                   </td>
                 </tr>
               ))}
             </tbody>
+
           </table>
         </div>
       </div>
